@@ -19,7 +19,7 @@ PYTHONUNBUFFERED=1
 INSTANCE_ID=$1
 JOB_CMD=$2
 
-AWS=/usr/local/bin/aws
+AWS=aws
 PROJ_DIR=/home/ubuntu/project
 CONDA_PATH=/home/ubuntu/miniconda3
 CONDASH=$CONDA_PATH/etc/profile.d/conda.sh
