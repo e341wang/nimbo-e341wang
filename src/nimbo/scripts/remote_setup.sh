@@ -4,8 +4,6 @@ trap 'echo "Job failed."; do_cleanup; exit 1' ERR
 trap 'echo "Received signal to stop."; do_cleanup; exit 1' SIGINT
 
 do_cleanup () { 
-    echo "Backing up nimbo logs..."
-    $AWS s3 cp --quiet $LOCAL_LOG $S3_LOG_PATH
 
     PERSIST="$(grep 'persist:' $CONFIG | awk '{print $2}')"
     if [ "$PERSIST" = "no" ]; then
@@ -105,7 +103,8 @@ fi
 echo ""
 echo "Saving results to S3..."
 $S3SYNC $LOCAL_RESULTS_PATH $S3_RESULTS_PATH
-
+echo "Backing up nimbo logs..."
+$AWS s3 cp --quiet $LOCAL_LOG $S3_LOG_PATH
 conda deactivate
 echo ""
 echo "Job finished."
