@@ -97,6 +97,7 @@ elif [ "$JOB_CMD" = "_nimbo_notebook" ]; then
     exit 0
 else
     echo "Running job: ${@:2}"
+    echo $JOB_CMD
     eval ${@:2}
 fi
 
