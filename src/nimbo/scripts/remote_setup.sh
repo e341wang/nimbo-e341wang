@@ -96,7 +96,7 @@ elif [ "$JOB_CMD" = "_nimbo_notebook" ]; then
     echo "Notebook running at http://localhost:57467/lab"
     exit 0
 else
-    echo "Running job: ${@:2}"
+    echo "Running job: $2"
     echo $JOB_CMD
     eval ${@:2}
 fi
